@@ -1,0 +1,12 @@
+[user]
+	name = kevinkowalew
+	email = 9099021+kevinkowalew@users.noreply.github.com
+[alias]
+	c = clean -f -d
+	l = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s' --abbrev-commit
+	b = branch
+	s = status
+	a = add .
+	co = checkout $1
+[gc]
+	auto = 0
