@@ -51,4 +51,7 @@ set hidden
 " mouse support
 set mouse=a
 
+" yaml tab indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " example macro definition: let @a = 'gg'
