@@ -31,8 +31,8 @@ set tabstop=4
 set shiftwidth=4
 
 " search options
-set hlsearch
-set incsearch
+set nohlsearch
+set noincsearch
 set ignorecase
 set smartcase	 
 
