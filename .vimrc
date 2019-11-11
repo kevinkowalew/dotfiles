@@ -22,17 +22,13 @@ syntax on
 " tab completion menu
 set wildmenu
 
-" theme
-color slate
-set bg=light
-
 " tab settings
 set tabstop=4
 set shiftwidth=4
 
 " search options
-set nohlsearch
-set noincsearch
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase	 
 
@@ -51,7 +47,26 @@ set hidden
 " mouse support
 set mouse=a
 
-" yaml tab indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" lightline formatting
+set laststatus=2
+set noshowmode
+let g:lightline = {'colorscheme': 'jellybeans',}
 
-" example macro definition: let @a = 'gg'
+" theme
+colorscheme jellybeans
+
+" plugins 
+call plug#begin('~/.vim/plugged')
+
+" fzf 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" lightline 
+Plug 'itchyny/lightline.vim'
+
+" colorscheme download 
+Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
+call plug#end()
+
+"example macro definition: let @a = 'gg'
