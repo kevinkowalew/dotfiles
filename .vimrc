@@ -84,8 +84,7 @@ Plug 'scrooloose/nerdtree'
 " vim-gitbranch
 Plug 'itchyny/vim-gitbranch'
 
-" vim-one
-Plug 'rakr/vim-one'
+" vim-fugitive
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
