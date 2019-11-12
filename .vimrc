@@ -30,7 +30,11 @@ set shiftwidth=4
 set hlsearch
 set incsearch
 set ignorecase
-set smartcase	 
+set smartcase	
+
+" yaml tab indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 
 " linebreak
 set lbr
@@ -47,15 +51,24 @@ set hidden
 " mouse support
 set mouse=a
 
-" lightline formatting
+" lightline setup
 set laststatus=2
 set noshowmode
-let g:lightline = {'colorscheme': 'jellybeans',}
 
-" theme
-colorscheme jellybeans
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode'] ],
+      \   'right':  [ ['modified', 'readonly', 'gitbranch', 'filename'] ],
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
+"
 " plugins 
+"
 call plug#begin('~/.vim/plugged')
 
 " fzf 
@@ -65,8 +78,20 @@ Plug 'junegunn/fzf.vim'
 " lightline 
 Plug 'itchyny/lightline.vim'
 
-" colorscheme download 
-Plug 'nanotech/jellybeans.vim', { 'tag': 'v1.7' }
+" nerdtree 
+Plug 'scrooloose/nerdtree'
+
+" vim-gitbranch
+Plug 'itchyny/vim-gitbranch'
+
+" vim-one
+Plug 'rakr/vim-one'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
-"example macro definition: let @a = 'gg'
+
+"
+" key mappings
+"
+map <c-j> :Files<ENTER>
+map <C-o> :NERDTreeToggle<CR>
