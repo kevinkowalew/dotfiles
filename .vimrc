@@ -18,8 +18,9 @@ set showcmd
 
 " syntax highlighting
 syntax on
+set runtimepath+=~/.vim/bundle/swift.vim
 
-" tab completion menu
+" show tab completion menu
 set wildmenu
 
 " tab settings
@@ -34,7 +35,6 @@ set smartcase
 
 " yaml tab indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-
 
 " linebreak
 set lbr
@@ -51,10 +51,9 @@ set hidden
 " mouse support
 set mouse=a
 
-" lightline setup
+" lightline setup & styling
 set laststatus=2
 set noshowmode
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
