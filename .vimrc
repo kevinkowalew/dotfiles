@@ -65,9 +65,7 @@ let g:lightline = {
       \ },
       \ }
 
-"
 " plugins 
-"
 call plug#begin('~/.vim/plugged')
 
 " fzf 
@@ -87,10 +85,6 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
-
-"
-" key mappings
-"
+" mappings
 map <c-j> :Files<ENTER>
 map <C-o> :NERDTreeToggle<CR>
-"map <C-b> :
