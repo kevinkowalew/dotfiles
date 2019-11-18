@@ -93,4 +93,3 @@ call plug#end()
 "
 map <c-j> :Files<ENTER>
 map <C-o> :NERDTreeToggle<CR>
-"map <C-b> :
