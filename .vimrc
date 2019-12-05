@@ -7,6 +7,12 @@
 " command history limit
 set history=1000
 
+" disables vi support
+set nocompatible
+
+" enables file type plugin scripts
+filetype plugin on
+
 " show line numbers
 set number
 
@@ -18,6 +24,8 @@ set showcmd
 
 " syntax highlighting
 syntax on
+
+"swift syntax highlighting support
 set runtimepath+=~/.vim/bundle/swift.vim
 
 " show tab completion menu
