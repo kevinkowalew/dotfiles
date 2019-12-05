@@ -75,16 +75,15 @@ Plug 'junegunn/fzf.vim'
 " lightline 
 Plug 'itchyny/lightline.vim'
 
-" nerdtree 
-Plug 'scrooloose/nerdtree'
-
 " vim-gitbranch
 Plug 'itchyny/vim-gitbranch'
 
 " vim-fugitive
 Plug 'tpope/vim-fugitive'
+
+" vim-wiki
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " mappings
 map <c-j> :Files<ENTER>
-map <C-o> :NERDTreeToggle<CR>
