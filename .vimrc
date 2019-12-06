@@ -59,6 +59,9 @@ set hidden
 " mouse support
 set mouse=a
 
+" vimwiki dropbox path config 
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}] " set path to a directory inside Dropbox
+
 " lightline setup & styling
 set laststatus=2
 set noshowmode
@@ -76,10 +79,6 @@ let g:lightline = {
 " plugins 
 call plug#begin('~/.vim/plugged')
 
-" fzf 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
 " lightline 
 Plug 'itchyny/lightline.vim'
 
@@ -92,6 +91,3 @@ Plug 'tpope/vim-fugitive'
 " vim-wiki
 Plug 'vimwiki/vimwiki'
 call plug#end()
-
-" mappings
-map <c-j> :Files<ENTER>
