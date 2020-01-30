@@ -82,12 +82,6 @@ call plug#begin('~/.vim/plugged')
 " lightline 
 Plug 'itchyny/lightline.vim'
 
-" vim-gitbranch
-Plug 'itchyny/vim-gitbranch'
-
-" vim-fugitive
-Plug 'tpope/vim-fugitive'
-
 " vim-wiki
 Plug 'vimwiki/vimwiki'
 call plug#end()
