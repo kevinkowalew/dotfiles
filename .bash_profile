@@ -7,11 +7,15 @@
 # sets primary prompt
 export PS1="$ "
 
+# python 3 aliases
+alias pip='pip3'
+alias python='python3'
+
+# enables bash vim mode 
+set -o vi
+
 # removes zsh warning prompt on macOS Catalina
 export BASH_SILENCE_DEPRECATION_WARNING=1
-
-# todo list alias
-alias todo='vim ~/Desktop/.todo.txt'
 
 # dotfiles config git alias
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
