@@ -1,9 +1,8 @@
-################################################################################
-#                                                                              #
-#                                                                Kevin's .bash_profile                         #
-#                                                                              #
-################################################################################
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                              "
+"							 Kevin's .bash_profile                             "
+"                                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 # sets primary prompt
 export PS1="$ "
 
@@ -13,6 +12,9 @@ alias python='python3'
 
 # enables bash vim mode 
 set -o vi
+
+# disables v vim alias
+set keymap vi-command
 
 # removes zsh warning prompt on macOS Catalina
 export BASH_SILENCE_DEPRECATION_WARNING=1
