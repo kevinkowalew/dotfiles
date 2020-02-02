@@ -13,7 +13,7 @@ alias python='python3'
 # enables bash vim mode 
 set -o vi
 
-# disables v vim alias
+# disables bash vim alias
 set keymap vi-command
 
 # removes zsh warning prompt on macOS Catalina
