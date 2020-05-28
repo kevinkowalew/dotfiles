@@ -1,87 +1,45 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                                              "
-"								 Kevin's .vimrc                                "
-"                                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" command history limit
-set history=1000
-
-" disables vi support
-set nocompatible
-
-" enables file type plugin scripts
-filetype plugin on
-
-" show line numbers
-set number
-
-" show cursor position
-set ruler
-
-"show incomplete commands.
-set showcmd
-
-" syntax highlighting
-syntax on
-
-"swift syntax highlighting support
-set runtimepath+=~/.vim/bundle/swift.vim
-
-" show tab completion menu
-set wildmenu
-
-" tab settings
-set tabstop=4
+syntax on	" syntax highlighting
+set history=1000 	" command history limit
+set nocompatible    " disables vi support
+filetype plugin indent on	" enables file type plugin scripts
+set number	" show line numbers
+set ruler	" show cursor position
+set showcmd	"show incomplete commands.
+set runtimepath+=~/.vim/bundle/swift.vim	"swift syntax highlighting support
+set wildmenu	" show tab completion menu
+set tabstop=4	" tab settings
 set shiftwidth=4
-
-" search options
-set nohls
+set hls	" search options
 set incsearch
 set ignorecase
 set smartcase	
+set belloff=all 
+set noswapfile
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab	" yaml tab indent
+set lbr	" linebreak
+set ai	" auto indent
+set si	" smart indent
+set hidden	" buffer hidden setting
+set mouse=a	" mouse support
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}] " vimwiki dropbox path config 
 
-" yaml tab indent
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+let mapleader=" " 	" leader key mapping
+nnoremap <silent> <Leader>f :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>J :NERDTreeFind<CR>
+nnoremap <silent> <Leader>o :CtrlP<CR>
 
-" linebreak
-set lbr
+map <silent> <leader>s :bp<CR>
+map <silent> <leader>d :bn<CR>
+map <silent> <leader>tj :bel term<CR>
 
-" auto indent
-set ai
+map <silent> <leader>h :wincmd h<CR>
+map <silent> <leader>j :wincmd j<CR>
+map <silent> <leader>k :wincmd k<CR>
+map <silent> <leader>l :wincmd l<CR>
 
-" smart indent
-set si
-
-" buffer hidden setting
-set hidden
-
-" mouse support
-set mouse=a
-
-" vimwiki dropbox path config 
-let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}] " set path to a directory inside Dropbox
-
-" lightline setup & styling
-set laststatus=2
-set noshowmode
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode'] ],
-      \   'right':  [ ['modified', 'readonly', 'gitbranch', 'filename'] ],
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
-" plugins 
 call plug#begin('~/.vim/plugged')
-
-" lightline 
-Plug 'itchyny/lightline.vim'
-
-" vim-wiki
 Plug 'vimwiki/vimwiki'
+Plug 'preservim/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'morhetz/gruvbox'
 call plug#end()
