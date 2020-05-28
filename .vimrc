@@ -41,5 +41,4 @@ call plug#begin('~/.vim/plugged')
 Plug 'vimwiki/vimwiki'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'morhetz/gruvbox'
 call plug#end()
