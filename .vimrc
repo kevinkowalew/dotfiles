@@ -28,9 +28,16 @@ nnoremap <silent> <Leader>f :NERDTreeToggle<Enter>
 nnoremap <silent> <Leader>J :NERDTreeFind<CR>
 nnoremap <silent> <Leader>o :CtrlP<CR>
 
+nnoremap <silent> <Leader>b :buffers<CR>
 map <silent> <leader>s :bp<CR>
 map <silent> <leader>d :bn<CR>
+map <silent> <leader>w :w<CR>
+map <silent> <leader>q :bd<CR>
+
 map <silent> <leader>tj :bel term<CR>
+map <silent> <leader>tk :abo term<CR>
+map <silent> <leader>th :abo vert term<CR>
+map <silent> <leader>tl :bel vert term<CR>
 
 map <silent> <leader>h :wincmd h<CR>
 map <silent> <leader>j :wincmd j<CR>
