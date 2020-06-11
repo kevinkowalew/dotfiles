@@ -49,7 +49,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
