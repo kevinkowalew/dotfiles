@@ -46,6 +46,14 @@ map <silent> <leader>l :wincmd l<CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'vimwiki/vimwiki'
+Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+syntax enable
+set background=dark
+set t_Co=256
+colorscheme gruvbox
