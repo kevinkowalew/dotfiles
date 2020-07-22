@@ -1,3 +1,13 @@
+call plug#begin('~/.vim/plugged')
+Plug 'vimwiki/vimwiki'
+Plug 'morhetz/gruvbox'
+Plug 'preservim/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+call plug#end()
+
 syntax on	" syntax highlighting
 set history=1000 	" command history limit
 set nocompatible    " disables vi support
@@ -24,8 +34,15 @@ set mouse=a	" mouse support
 set spell
 let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}] " vimwiki dropbox path config 
 let g:NERDTreeWinSize=50
-
 let mapleader=" " 	" leader key mapping
+
+" Convenience mappings
+map <silent> <Leader>c "*y<Esc>
+map <silent> <Leader>v "*p<Esc>
+map <silent> <leader>~ :source %<CR>
+map <silent> <leader>rc :e ~/.vimrc<CR>
+map <silent> <leader>pi :PlugInstall<CR>
+map <silent> <leader>pc :PlugClean<CR>
 
 " NERDTree/Ctrl P mappings
 map <silent> <Leader>f :NERDTreeToggle<Enter>
@@ -37,9 +54,9 @@ map <silent> <Leader>b :buffers<CR>
 map <silent> <leader>s :bp<CR>
 map <silent> <leader>d :bn<CR>
 map <silent> <leader>w :w<CR>
-map <silent> <leader>q :bd<CR>
+map <silent> <leader>W :wq<CR>
+map <silent> <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 map <silent> <leader>Q :qa<CR>
-map <silent> <leader>~ :source %<CR>
 
 " Terminal mappings
 map <leader>tj :bel term<CR>
@@ -56,32 +73,24 @@ map <silent> <leader>l :wincmd l<CR>
 " Coc mappings
 map <leader>gd <Plug>(coc-definition)
 map <leader>gf <Plug>(coc-fix-current)
-map <leader>gF :Call CocAction('format')<Enter>
+map <leader>gF <Plug>(coc-format)
 map <leader>rr <Plug>(coc-rename)
 map <silent> <leader>ga :CocList actions<Enter>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " maven mappings
-function RunTestFunction()
-	let functionName=CocAction('getCurrentFunctionSymbol')
-	:bel vert execute "mvn-test-function" str(%:t:r) functionName
-endfunction
-
-map <silent> <leader>mb :bel vert term mvn clean package<CR>
+map <silent> <leader>mb :bel vert term mvn clean package<CR> 
+map <silent> <leader>mB :bel vert term <CR>
 map <silent> <leader>ms :bel vert term mvn dependency:purge-local-repository<CR>
 map <silent> <leader>ta :bel vert term mvn test<CR>
 map <silent> <leader>tf :bel vert term mvn -Dtest=%:t:r test<CR>
-"map <silent> <leader>tF :call RunTestFunction()<CR>
-
-call plug#begin('~/.vim/plugged')
-Plug 'vimwiki/vimwiki'
-Plug 'morhetz/gruvbox'
-Plug 'preservim/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
 
 syntax enable
 set background=dark
 set t_Co=256
 colorscheme gruvbox
+
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }
