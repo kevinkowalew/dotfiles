@@ -6,6 +6,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 call plug#end()
 
 syntax on	" syntax highlighting
@@ -25,16 +27,18 @@ set ignorecase
 set smartcase	
 set belloff=all 
 set noswapfile
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab	" yaml tab indent
 set lbr	" linebreak
 set ai	" auto indent
 set si	" smart indent
 set hidden	" buffer hidden setting
 set mouse=a	" mouse support
 set spell
-let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki'}] " vimwiki dropbox path config 
+let g:vimwiki_list = [{'path': '$HOME/Dropbox/vimwiki', 'syntax':'markdown','ext': '.md','list_margin': 0, 'links_space_char':'_'}] 
 let g:NERDTreeWinSize=50
 let mapleader=" " 	" leader key mapping
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab	" yaml tab indent
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " Convenience mappings
 map <silent> <Leader>c "*y<Esc>
@@ -43,6 +47,7 @@ map <silent> <leader>~ :source %<CR>
 map <silent> <leader>rc :e ~/.vimrc<CR>
 map <silent> <leader>pi :PlugInstall<CR>
 map <silent> <leader>pc :PlugClean<CR>
+map <silent> <leader>mp :MarkdownPreview<CR>
 
 " NERDTree/Ctrl P mappings
 map <silent> <Leader>f :NERDTreeToggle<Enter>
@@ -72,11 +77,11 @@ map <silent> <leader>l :wincmd l<CR>
 
 " Coc mappings
 map <leader>gd <Plug>(coc-definition)
+map <leader>gr <Plug>(coc-type-definition)
 map <leader>gf <Plug>(coc-fix-current)
-map <leader>gF <Plug>(coc-format)
+map <leader>gF :call CocAction('runCommand', 'prettier.formatFile')<Enter>
 map <leader>rr <Plug>(coc-rename)
 map <silent> <leader>ga :CocList actions<Enter>
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " maven mappings
 map <silent> <leader>mb :bel vert term mvn clean package<CR> 
@@ -94,3 +99,29 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'seoul256',
       \ }
+
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_browser = 'Google Chrome'
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false
+    \ }
+
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
