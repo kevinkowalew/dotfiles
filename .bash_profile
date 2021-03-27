@@ -20,6 +20,10 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # jupyter local env lauch alias
 alias jupyter='docker run -it --rm -p 8888:8888 -p 4040:4040 -v ~/Dropbox/jupyter\ notebooks:/home/jovyan/workspace jupyter/all-spark-notebook'
 
+function getIpAddressForContainerWithName() {
+  docker inspect $(docker ps | grep ${1} | cut -d " " -f1) | jq .[]."NetworkSettings"."Networks"."resources_default"."IPAddress"
+}
+
 export M2_HOME=/Applications/apache-maven-3.6.3
 export PATH=$PATH:$M2_HOME/bin
 export JAVA_HOME=$(/usr/libexec/java_home)
