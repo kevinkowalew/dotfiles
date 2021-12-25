@@ -28,6 +28,10 @@ export M2_HOME=/Applications/apache-maven-3.6.3
 export PATH=$PATH:$M2_HOME/bin
 export JAVA_HOME=$(/usr/libexec/java_home)
 
+# nexus oss
+alias start-nexus='docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss'
+alias stop-nexus='docker stop nexus && docker rm nexus && docker volume rm $(docker volume ls -q)'
+
 # git tab completion
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
