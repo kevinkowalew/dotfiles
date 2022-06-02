@@ -1,0 +1,7 @@
+alias c='clear'
+alias cpwd='echo "cd $(pwd)" | pbcopy'
+alias ll='ls -l'
+alias e='exit'
+alias o='open .'
+alias p='pwd'
+alias h='history'
