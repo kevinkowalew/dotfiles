@@ -10,6 +10,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/goyo.vim'
 Plug 'arzg/vim-colors-xcode'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'cocopon/iceberg.vim'
+Plug 'preservim/vimux'
 call plug#end()
 
 map <silent> <leader>pi :PlugInstall<CR>
