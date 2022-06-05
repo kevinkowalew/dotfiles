@@ -45,7 +45,7 @@ map <silent> <leader>k :wincmd k<CR>
 map <silent> <leader>l :wincmd l<CR>
 
 set laststatus=2
-"colorscheme xcodedark
+
 set background=dark
 colorscheme iceberg
 
