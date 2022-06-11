@@ -8,7 +8,7 @@ alias start-jupyter='docker run -it --rm -p 8888:8888 -p 4040:4040 -v ~/Dropbox/
 
 alias start-swagger-editor='docker run -d -p 80:8080 swaggerapi/swagger-editor'
 
-alias start-nexus='docker run -d -p 8081:8081 -p 8082:8082 -p 8083:8083 --name my-nexus  -v ~/my-nexus-data:/nexus-data sonatype/nexus3:3.32.0'
+alias start-nexus='docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss'
 alias stop-nexus='docker rm -f $(docker ps | grep nexus | cut -d" " -f1)'
 
 alias start-docker-hub='docker run -d -p 5000:5000 --restart=always --name dockerhub registry:2'
