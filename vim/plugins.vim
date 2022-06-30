@@ -12,6 +12,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'cocopon/iceberg.vim'
 Plug 'preservim/vimux'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 map <silent> <leader>pi :PlugInstall<CR>

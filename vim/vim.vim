@@ -47,7 +47,7 @@ map <silent> <leader>l :wincmd l<CR>
 set laststatus=2
 
 set background=dark
-colorscheme iceberg
+colorscheme gruvbox-material
 
 "" Convenience mappings
 nnoremap Y y$
