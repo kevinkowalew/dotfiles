@@ -8,5 +8,7 @@
 	s = status
 	a = add .
 	co = checkout $1
+	d = diff
+	ds = diff --staged
 [gc]
 	auto = 0
