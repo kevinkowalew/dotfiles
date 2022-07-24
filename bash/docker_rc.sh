@@ -1,4 +1,4 @@
-alias dsn='docker rm -f $(docker ps -a -q) & docker volume rm -f $(docker volume ls -q)'
+alias dsn='docker rm -f $(docker ps -a -q) && docker volume rm -f $(docker volume ls -q)'
 alias dn='(docker rm -f $(docker ps -a -q) && docker image rm -f $(docker image ls -q)) && docker volume rm -f $(docker volume ls -q)'
 
 export DOCKER_BUILDKIT=0
