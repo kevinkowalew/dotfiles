@@ -10,5 +10,6 @@
 	co = checkout $1
 	d = diff
 	ds = diff --staged
+	cano = commit --amend --no-edit
 [gc]
 	auto = 0
