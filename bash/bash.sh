@@ -13,6 +13,7 @@ alias e='exit'
 alias o='open .'
 alias p='pwd'
 alias h='history'
+alias env='env | sort'
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
