@@ -7,7 +7,7 @@ alias dd='ENTITY=$(filter_bash_vi_mode_prefix $@); exec -c "docker $ENTITY ls";'
 alias dsn='docker rm -f $(docker ps -a -q) && docker volume rm -f $(docker volume ls -q)'
 alias dn='(docker rm -f $(docker ps -a -q) && docker image rm -f $(docker image ls -q)) && docker volume rm -f $(docker volume ls -q)'
 
-export DOCKER_BUILDKIT=0
+export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=0
 
 alias start-jupyter='docker run -it --rm -p 8888:8888 -p 4040:4040 -v ~/Dropbox/jupyter\ notebooks:/home/jovyan/workspace jupyter/all-spark-notebook'
