@@ -8,3 +8,7 @@ source ~/dotfiles/bash/java.sh
 source ~/dotfiles/bash/macos_aliases.sh
 source ~/dotfiles/bash/python.sh
 source ~/dotfiles/bash/tmux_rc.sh
+
+if test -f ~/.env; then
+	source ~/.env
+fi
