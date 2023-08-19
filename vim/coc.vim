@@ -5,3 +5,4 @@ map <leader>gF :call CocAction('runCommand', 'prettier.formatFile')<Enter>
 map <leader>rr <Plug>(coc-rename)
 map <silent> <leader>ga :CocList actions<Enter>
 autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"

@@ -13,4 +13,4 @@ function filter_bash_vi_mode_prefix() {
 }
 
 alias dd='ENTITY=$(filter_bash_vi_mode_prefix $@); exec -c "docker $ENTITY ls";'
-
+alias code='cd $CODE_HOME_DIR'
