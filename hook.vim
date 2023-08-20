@@ -1,9 +1,10 @@
+source ~/dotfiles/vim/vim.vim
 source ~/dotfiles/vim/plugins.vim
+source ~/dotfiles/vim/gruvbox.vim
 source ~/dotfiles/vim/coc.vim
 source ~/dotfiles/vim/ctrlp.vim
 source ~/dotfiles/vim/goyo.vim
 source ~/dotfiles/vim/lightline.vim
 source ~/dotfiles/vim/markdown_preview.vim
-source ~/dotfiles/vim/vim.vim
 source ~/dotfiles/vim/nerdtree.vim
 source ~/dotfiles/vim/vimwiki.vim

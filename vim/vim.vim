@@ -45,9 +45,7 @@ map <silent> <leader>k :wincmd k<CR>
 map <silent> <leader>l :wincmd l<CR>
 
 set laststatus=2
-
 set background=dark
-colorscheme gruvbox-material
 
 "" Convenience mappings
 nnoremap Y y$
