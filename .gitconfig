@@ -13,3 +13,5 @@
 	cano = commit --amend --no-edit
 [gc]
 	auto = 0
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
