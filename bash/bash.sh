@@ -14,7 +14,8 @@ alias o='open .'
 alias p='pwd'
 alias h='history'
 alias env='env | sort'
-alias rg='function f() { grep -r -n "$*" | grep -v "Binary file"; unset -f f; }; f'
+alias cd='function f() { cd $* && tmux rename-window $(pwd | rev | cut -d"/" -f1 | rev); unset -f f; }; f'
+alias rg='function f() { grep -r -n "$*"; unset -f f; }; f'
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
