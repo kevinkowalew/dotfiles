@@ -1,16 +1,25 @@
-project=$(find /Users/kevin/code -mindepth 2 -maxdepth 2 \( -type d -o -type l \) | fzf)
+CODE_HOME_DIR=~/code
+project=$(find $CODE_HOME_DIR -mindepth 2 -maxdepth 2 \( -type d -o -type l \) | fzf)
 shortName=$(echo $project | rev | cut -d'/' -f1 | rev)
-existing=$(tmux list-windows -F '#{window_index}: #{window_name}'| grep $shortName)
 selected=$(tmux display-message -p '#{window_index}')
 
-if [ -n "$existing" ]; then
-	id=$(echo $existing | cut -d':' -f1)
-	if [ "$id" -eq $selected ]; then
-		exit
-	else
-		tmux select-window -t $id
-	fi
+current=$(tmux display-message -p "#{pane_current_path}")
+inProject=$(find $CODE_HOME_DIR -mindepth 2 -maxdepth 2 \( -type d -o -type l \) | grep -E $current$ | wc -l)
+if [ $inProject -eq 0 ];then
+	tmux send-keys -t $selected "cd $project && clear" Enter
+	tmux rename-window $shortName
+	exit
 else
-	tmux new-window -c $project -n $shortName 'vim .'
-	selected=$(tmux display-message -p '#{window_index}')
+	existing=$(tmux list-windows -F '#{window_index}: #{window_name}'| grep -E $shortName$ | cut -d":" -f1)
+	if [ -n "$existing" ]; then
+		if [ "$existing" == "$selected" ]; then
+			exit
+		else
+			tmux select-window -t $existing
+			exit
+		fi
+	else
+		tmux new-window -c $project -n $shortName 'vim .'
+		exit
+	fi
 fi
