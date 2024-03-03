@@ -1,5 +1,8 @@
 CODE_HOME_DIR=~/code
 project=$(find $CODE_HOME_DIR -mindepth 2 -maxdepth 2 \( -type d -o -type l \) | fzf)
+if [ -z "$project" ]; then 
+	exit
+fi
 shortName=$(echo $project | rev | cut -d'/' -f1 | rev)
 selected=$(tmux display-message -p '#{window_index}')
 
