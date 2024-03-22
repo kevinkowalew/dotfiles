@@ -16,6 +16,7 @@ alias h='history'
 alias env='env | sort'
 alias cd='function f() { cd $* && tmux rename-window $(pwd | rev | cut -d"/" -f1 | rev); unset -f f; }; f'
 alias rg='function f() { grep -r -n "$*"; unset -f f; }; f'
+alias m='cat Makefile | grep ":" | fzf | cut -d":" -f1 | xargs make'
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
