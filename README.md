@@ -1,3 +1,4 @@
 # Dotfiles
-## Intent
-- Run Command & Config Files
+```
+make build
+```
