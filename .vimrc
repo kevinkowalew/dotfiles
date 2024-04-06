@@ -48,6 +48,7 @@ nnoremap Y y$
 map <silent> <Leader>c "*y<Esc>
 map <silent> <Leader>v "*p<Esc>
 
+
 " ____  _             _
 "|  _ \| |_   _  __ _(_)_ __  ___
 "| |_) | | | | |/ _` | | '_ \/ __|
@@ -71,13 +72,8 @@ call plug#end()
 " \____\___/ \___|
 "
 map <leader>gd <Plug>(coc-definition)
-map <leader>gr <Plug>(coc-type-definition)
-map <leader>gf <Plug>(coc-fix-current)
-map <leader>gF :call CocAction('runCommand', 'prettier.formatFile')<Enter>
-map <leader>rr <Plug>(coc-rename)
-map <silent> <leader>ga :CocList actions<Enter>
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-inoremap <silent><expr> <CR> coc"pum"visible() ? coc"pum"confirm() : "\<CR>"
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "  ____ _        _   ____  
 " / ___| |_ _ __| | |  _ \ 
