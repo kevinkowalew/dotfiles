@@ -26,10 +26,22 @@ alias h='history'
 alias env='env | sort'
 alias cd='function f() { cd $* && tmux rename-window $(pwd | rev | cut -d"/" -f1 | rev); unset -f f; }; f'
 alias rg='function f() { grep -r -n "$*"; unset -f f; }; f'
+alias rG='recursive_grep_menu'
 alias m='cat Makefile | grep ":" | grep -v docker | cut -d":" -f1 | sort --reverse | fzf | xargs make'
 alias om='git s | grep modified | cut -d":" -f2'
 alias or='open_remote_in_chrome'
 alias cpwd='echo "cd $(pwd)" | pbcopy'
+alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; f'
+alias hG='history_menu'
+
+function recursive_grep_menu() {
+	grep -r -n "*" | grep -v .git | fzf | cut -d":" -f2 -f1 | awk -F":" '{print "+"$2, $1}' | xargs -o vim
+}
+
+function history_menu() {
+	$(cat $HOME/.bash_history | grep "$*" | fzf)
+}
+
 
 function open_remote_in_chrome() {
 	REMOTE_NAME=$(git remote)
