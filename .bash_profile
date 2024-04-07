@@ -35,11 +35,11 @@ alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; 
 alias hG='function f() { history_menu "$*"; unset -f f; }; f'
 
 function recursive_grep_menu() {
-	grep -r -n "$*" | grep -v .git | fzf | cut -d":" -f2 -f1 | awk -F":" '{print "+"$2, $1}' | xargs -o vim
+	grep -r -n "$@" | grep -v .git | fzf | cut -d":" -f2 -f1 | awk -F":" '{print "+"$2, $1}' | xargs -o vim
 }
 
 function history_menu() {
-	$(cat $HOME/.bash_history | grep "$*" | fzf)
+	$(cat $HOME/.bash_history | grep "$@" | fzf)
 }
 
 
