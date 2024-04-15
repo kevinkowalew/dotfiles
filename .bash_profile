@@ -91,6 +91,11 @@ export PATH=$PATH:$GOPATH/bin
 export GO111MODULE=on
 export GOPRIVATE=github.com/Kowalewski-Development/*
 alias gbt='go clean -testcache && go build ./... && go test ./...'
+alias gbt='go clean -testcache && go build ./... && go test ./...'
+alias gt='go clean -testcache && go test ./...'
+alias gb='go build ./...'
+alias gg='go generate ./...'
+
 
 # _____
 #|_   _| __ ___  _   ___  __
