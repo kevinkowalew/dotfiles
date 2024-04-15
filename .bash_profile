@@ -122,6 +122,15 @@ function kill_all_sessions() {
 alias tk='kill_unassigned_sessions'
 alias tka='kill_all_sessions'
 
+function source_if_existent() {
+	if [ -e $@ ]; then
+		source $@
+	fi
+}
+
+source_if_existent "$HOME/.work_rc"
+source_if_existent "$HOME/.env"
+
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
