@@ -82,6 +82,7 @@ inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " \____|\__|_|  |_| |_|    
 "                          
 map <silent> <Leader>o :CtrlP<CR>
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " _     _       _     _   _ _
 "| |   (_) __ _| |__ | |_| (_)_ __   ___
