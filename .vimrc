@@ -57,12 +57,9 @@ map <silent> <Leader>v "*p<Esc>
 "               |___/
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'sainnhe/gruvbox-material'
-Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 "  ____
@@ -75,25 +72,16 @@ map <leader>gd <Plug>(coc-definition)
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-"  ____ _        _   ____  
-" / ___| |_ _ __| | |  _ \ 
-"| |   | __| '__| | | |_) |
-"| |___| |_| |  | | |  __/ 
-" \____|\__|_|  |_| |_|    
-"                          
-map <silent> <Leader>o :CtrlP<CR>
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-
-" _     _       _     _   _ _
-"| |   (_) __ _| |__ | |_| (_)_ __   ___
-"| |   | |/ _` | '_ \| __| | | '_ \ / _ \
-"| |___| | (_| | | | | |_| | | | | |  __/
-"|_____|_|\__, |_| |_|\__|_|_|_| |_|\___|
-"         |___/
+"   __     __
+"  / _|___/ _|
+" | ||_  / |_
+" |  _/ /|  _|
+" |_|/___|_|
 "
-let g:lightline = {
-      \ 'colorscheme': 'iceberg',
-      \ }
+let g:fzf_layout = { 'down':  '40%'}
+map <silent> <Leader>o :GFiles<CR>
+
+
 " _   _              _ _                 
 "| \ | | ___ _ __ __| | |_ _ __ ___  ___ 
 "|  \| |/ _ \ '__/ _` | __| '__/ _ \/ _ \
@@ -115,10 +103,3 @@ map <silent> <Leader>nr :NERDTreeRefreshRoot<CR>
 "
 map <silent> <leader>pi :PlugInstall<CR>
 map <silent> <leader>pc :PlugClean<CR>
-
-"  ____                  _
-" / ___|_ __ _   ___   _| |__   _____  __
-"| |  _| '__| | | \ \ / / '_ \ / _ \ \/ /
-"| |_| | |  | |_| |\ V /| |_) | (_) >  <
-" \____|_|   \__,_| \_/ |_.__/ \___/_/\_\
-colorscheme gruvbox-material
