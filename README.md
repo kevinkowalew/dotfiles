@@ -1,4 +1,4 @@
 # Dotfiles
 ```
-make build
+make
 ```
