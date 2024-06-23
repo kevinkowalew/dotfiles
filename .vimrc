@@ -47,7 +47,7 @@ map <silent> <leader>l :wincmd l<CR>
 nnoremap Y y$
 map <silent> <Leader>c "*y<Esc>
 map <silent> <Leader>v "*p<Esc>
-colorscheme retrobox
+colorscheme sorbet
 
 " ____  _             _
 "|  _ \| |_   _  __ _(_)_ __  ___
