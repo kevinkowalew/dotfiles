@@ -1,8 +1,8 @@
 {
-        "coc.preferences.formatOnSave": true,
-        "coc.preferences.formatOnSaveFileTypes": [
-                "go",
-                "json",
-                "js",
-        ]
+	"coc.preferences.formatOnSave": true,
+	"coc.preferences.formatOnSaveFileTypes": [
+		"go",
+		"json",
+		"js"
+	]
 }

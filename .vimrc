@@ -56,7 +56,6 @@ colorscheme sorbet
 "|_|   |_|\__,_|\__, |_|_| |_|___/
 "               |___/
 call plug#begin('~/.vim/plugged')
-Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -81,19 +80,6 @@ inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 let g:fzf_layout = { 'down':  '30%'}
 map <silent> <Leader>o :GFiles<CR>
 
-
-" _   _              _ _                 
-"| \ | | ___ _ __ __| | |_ _ __ ___  ___ 
-"|  \| |/ _ \ '__/ _` | __| '__/ _ \/ _ \
-"| |\  |  __/ | | (_| | |_| | |  __/  __/
-"|_| \_|\___|_|  \__,_|\__|_|  \___|\___|
-"                                        
-let g:NERDTreeWinSize=50
-let g:NERDTreeChDirMode=2
-map <silent> <Leader>f :NERDTreeToggle<Enter>
-map <silent> <Leader>F :NERDTreeFind<CR>
-map <silent> <Leader>nr :NERDTreeRefreshRoot<CR>
-
 " ____  _                            _
 "|  _ \| |_   _  __ _  __ _  ___  __| |
 "| |_) | | | | |/ _` |/ _` |/ _ \/ _` |
@@ -103,3 +89,16 @@ map <silent> <Leader>nr :NERDTreeRefreshRoot<CR>
 "
 map <silent> <leader>pi :PlugInstall<CR>
 map <silent> <leader>pc :PlugClean<CR>
+
+" _   _      _                 
+"| \ | | ___| |_ _ ____      __
+"|  \| |/ _ \ __| '__\ \ /\ / /
+"| |\  |  __/ |_| |   \ V  V / 
+"|_| \_|\___|\__|_|    \_/\_/  
+"
+let g:netrw_liststyle = 3 " tree explorer
+let g:netrw_banner = 0 " hide banner
+let g:netrw_browse_split = 4 "always use vertical split
+let g:netrw_winsize = 25 " default width
+let g:netrw_altv = 1 " Open files in the new vertical split
+map <silent> <leader>f :Lexplore<CR>
