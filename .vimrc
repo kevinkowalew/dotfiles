@@ -96,6 +96,7 @@ map <silent> <leader>pc :PlugClean<CR>
 "| |\  |  __/ |_| |   \ V  V / 
 "|_| \_|\___|\__|_|    \_/\_/  
 "
+let g:netrw_list_hide = '^\.\w\+'
 let g:netrw_liststyle = 3 " tree explorer
 let g:netrw_banner = 0 " hide banner
 let g:netrw_browse_split = 4 "always use vertical split
