@@ -96,6 +96,7 @@ alias gt='go clean -testcache && go test ./...'
 alias gb='go build ./...'
 alias gg='go generate ./...'
 
+alias k3s='sh ${HOME}/dotfiles/ssh_k3s_node.sh'
 
 # _____
 #|_   _| __ ___  _   ___  __
@@ -134,3 +135,5 @@ source_if_existent "$HOME/.env"
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+
+
