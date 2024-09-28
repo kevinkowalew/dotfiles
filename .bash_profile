@@ -95,6 +95,7 @@ alias gbt='go clean -testcache && go build ./... && go test ./...'
 alias gt='go clean -testcache && go test ./...'
 alias gb='go build ./...'
 alias gg='go generate ./...'
+export PATH=$PATH:$HOME/.rd/bin
 
 alias k3s='sh ${HOME}/dotfiles/ssh_k3s_node.sh'
 
