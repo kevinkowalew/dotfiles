@@ -10,7 +10,8 @@ export PS1="$ "
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
 
-alias g='git'
+alias g='sh ~/dotfiles/sgit-shim.sh'
+alias git='sh ~/dotfiles/sgit-shim.sh'
 alias v='vim'
 alias d='docker'
 alias dc='docker-compose'
