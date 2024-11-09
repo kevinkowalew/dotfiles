@@ -1,5 +1,5 @@
 if [[ $1 == "ls" || $1 == "sync" ]]; then
-	sgit $@
+	sgit "$@"
 else
-	git $@
+	git "$@"
 fi
