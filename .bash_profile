@@ -78,7 +78,7 @@ alias stop-nexus='docker rm -f $(docker ps | grep nexus | cut -d" " -f1)'
 alias start-docker-hub='docker run -d -p 5000:5000 --restart=always --name dockerhub registry:2'
 alias stop-docker-hub='docker rm -f $(docker ps | grep dockerhub | cut -d" " -f1)'
 alias dd='ENTITY=$(filter_bash_vi_mode_prefix $@); exec -c "docker $ENTITY ls";'
-alias code='cd $CODE_HOME_DIR'
+alias code='cd $CODE_HOME_DIR/$GITHUB_USERNAME'
 
 #  ____
 # / ___| ___

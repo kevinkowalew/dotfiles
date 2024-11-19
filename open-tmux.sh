@@ -1,5 +1,5 @@
 CODE_HOME_DIR=~/code
-project=$(find $CODE_HOME_DIR -mindepth 2 -maxdepth 2 \( -type d -o -type l \) | fzf)
+project=$(find $CODE_HOME_DIR -mindepth 3 -maxdepth 3 \( -type d -o -type l \) | fzf)
 if [ -z "$project" ]; then 
 	exit
 fi
