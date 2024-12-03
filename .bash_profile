@@ -144,8 +144,8 @@ source_if_existent "$HOME/.env"
 # .bash_profile snippet to attach to an existing tmux session or create one
 if [ -z "$TMUX" ]; then
   if tmux list-sessions 2>/dev/null | grep -q .; then
-    tmux attach-session
+    exec tmux attach-session
   else
-    tmux new-session
+    exec tmux new-session
   fi
 fi
