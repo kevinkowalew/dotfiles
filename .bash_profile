@@ -141,8 +141,11 @@ function source_if_existent() {
 source_if_existent "$HOME/.work_rc"
 source_if_existent "$HOME/.env"
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+# .bash_profile snippet to attach to an existing tmux session or create one
+if [ -z "$TMUX" ]; then
+  if tmux list-sessions 2>/dev/null | grep -q .; then
+    tmux attach-session
+  else
+    tmux new-session
+  fi
 fi
-
-
