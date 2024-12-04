@@ -35,8 +35,7 @@ alias or='open_remote_in_chrome'
 alias cpwd='echo "cd $(pwd)" | pbcopy'
 alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; f'
 alias hG='function f() { history_menu "$*"; unset -f f; }; f'
-
-
+alias notes='cd ~/notes && vim -c "Lexplore"'
 function switch_k8s_context() {
 	NAMESPACE=$(kubectl get namespace | grep -v NAME | awk '{print($1)}' | fzf)
 	kubectl config set-context --current --namespace="${NAMESPACE}"
