@@ -8,7 +8,7 @@ for arg in "$@"; do
 done
 
 if $flag_c; then
-	kubectl config view -o json | jq -r .contexts[].context.namespace
+	kubectl config view -o json | jq -r .contexts[].context.namespace | grep -v null
 else
 	NAMESPACE=$(kubectl get namespace | grep -v NAME | grep -v kube-public | grep -v kube-node-lease | awk '{print($1)}' | sort | fzf)
 	kubectl config set-context --current --namespace="${NAMESPACE}" > /dev/null
