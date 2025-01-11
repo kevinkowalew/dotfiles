@@ -1,19 +1,36 @@
 #!/bin/bash
-flag_c=false
+services=$(kubectl get svc --all-namespaces | grep -v kube-system | grep -v NAMESPACE)
+service_name=$(echo "${services[*]}" | awk '{print($2)}' | fzf)
+full_service=$(echo "${services[*]}" | grep ${service_name} | head -n 1)
+namespace=$(echo $full_service | awk '{print($1)}')
+bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1)
+container_port=$bind_port
 
-for arg in "$@"; do
-  if [[ "$arg" == "-o" ]]; then
-    flag_c=true
-  fi
+while true; do 
+	available=$(lsof -i :$bind_port | wc -l)
+	if [[ $available -eq "0" ]];
+	then
+		break
+	else
+		bind_port=$((bind_port+1))
+	fi
 done
 
-TARGET=$(kubectl get svc | grep -v NAME | fzf)
-NAME=$(echo $TARGET | awk '{print($1)}')
-PORT=$(echo $TARGET | awk '{print($5)}' | cut -d"/" -f1)
-echo $NAME $PORT
+while true; do 
+	read  -p "Enter port (default $bind_port):" input
+	if [[ $input -eq "" ]];
+	then
+		kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
+		break
+	else
+		available=$(lsof -i :$input | wc -l)
+		if [[ $available -eq "0" ]];
+		then
+			kubectl port-forward -n $namespace svc/$service_name $input:$container_port
+			break
+		else
+			echo Another process is already bound to $input. Choose another port.
+		fi
 
-if $flag_c; then
-	open https://localhost:$PORT
-fi
-
-kubectl port-forward svc/$NAME $PORT:$PORT
+	fi
+done
