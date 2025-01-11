@@ -3,7 +3,7 @@ services=$(kubectl get svc --all-namespaces | grep -v kube-system | grep -v NAME
 service_name=$(echo "${services[*]}" | awk '{print($2)}' | fzf)
 full_service=$(echo "${services[*]}" | grep ${service_name} | head -n 1)
 namespace=$(echo $full_service | awk '{print($1)}')
-bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1)
+bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1 | cut -d ":" -f1)
 container_port=$bind_port
 
 while true; do 
