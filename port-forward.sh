@@ -16,21 +16,27 @@ while true; do
 	fi
 done
 
-while true; do 
-	read  -p "Enter port (default $bind_port):" input
-	if [[ $input -eq "" ]];
-	then
-		kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
-		break
-	else
-		available=$(lsof -i :$input | wc -l)
-		if [[ $available -eq "0" ]];
+if [[ $bind_port -eq $container_port ]];
+then
+	kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
+else 
+	while true; do 
+		read  -p "Enter port (default $bind_port):" input
+		if [[ $input -eq "" ]];
 		then
-			kubectl port-forward -n $namespace svc/$service_name $input:$container_port
+			kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
 			break
 		else
-			echo Another process is already bound to $input. Choose another port.
-		fi
+			available=$(lsof -i :$input | wc -l)
+			if [[ $available -eq "0" ]];
+			then
+				kubectl port-forward -n $namespace svc/$service_name $input:$container_port
+				break
+			else
+				echo Another process is already bound to $input. Choose another port.
+			fi
 
-	fi
-done
+		fi
+	done
+fi
+
