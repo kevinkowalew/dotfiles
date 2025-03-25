@@ -49,7 +49,7 @@ function recursive_grep_menu() {
 }
 
 function history_menu() {
-	$(cat $HOME/.bash_history | grep "$@" | fzf)
+	cat $HOME/.bash_history | grep "$@" | fzf | pbcopy
 }
 
 
