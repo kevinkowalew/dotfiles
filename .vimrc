@@ -68,6 +68,7 @@ call plug#end()
 " \____\___/ \___|
 "
 map <leader>gd <Plug>(coc-definition)
+map <leader>gr <Plug>(coc-references)
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
