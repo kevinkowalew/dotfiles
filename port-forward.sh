@@ -1,11 +1,9 @@
 #!/bin/bash
 services=$(kubectl get svc --all-namespaces | grep -v kube-system | grep -v NAMESPACE)
-service_name=$(echo "${services[*]}" | awk '{print $2 " (" $1 ")"}' | fzf)
+service_name=$(echo "${services[*]}" | awk '{print $2 " (" $1 ")"}' | fzf | awk '{print($1)}')
 if [ -z "$service_name" ]; then
 	exit
 fi
-service_name=$(echo "$service_name" | awk '{print($1)}')
-
 full_service=$(echo "${services[*]}" | grep ${service_name} | head -n 1)
 namespace=$(echo $full_service | awk '{print($1)}')
 bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1 | cut -d ":" -f1)
@@ -44,4 +42,3 @@ else
 		fi
 	done
 fi
-
