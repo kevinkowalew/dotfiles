@@ -9,6 +9,11 @@ namespace=$(echo $full_service | awk '{print($1)}')
 bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1 | cut -d ":" -f1)
 container_port=$bind_port
 
+if [ $bind_port -lt 1024 ];
+then
+	bind_port=1024
+fi
+
 while true; do 
 	available=$(lsof -i :$bind_port | wc -l)
 	if [[ $available -eq "0" ]];
