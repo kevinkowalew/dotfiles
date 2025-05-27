@@ -3,6 +3,7 @@
 	"coc.preferences.formatOnSaveFileTypes": [
 		"go",
 		"json",
-		"js"
+		"js",
+		"svelte"
 	]
 }
