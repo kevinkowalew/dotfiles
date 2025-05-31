@@ -29,15 +29,35 @@ then
 	kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
 else 
 	while true; do 
-		read  -p "Enter port (default $bind_port):" input
+		read  -p "Enter port (default $bind_port): " input
 		if [[ $input -eq "" ]];
 		then
+			while true; do
+				read -p "Open in browser? (y/n): " input
+				if [ "$input" = "y" ]; then
+					open -n -a "Google Chrome" --args "http://localhost:${bind_port}"
+					break
+				elif [ "$input" = "n" ]; then
+					break
+				fi
+			done
+
 			kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
 			break
 		else
 			available=$(lsof -i :$input | wc -l)
 			if [[ $available -eq "0" ]];
 			then
+				while true; do
+					read -p "Open in browser? (y/n): " browser
+					if [ "$browser" = "y" ]; then
+						open -n -a "Google Chrome" --args "http://localhost:${input}"
+						break
+					elif [ "$browser" = "n" ]; then
+						break
+					fi
+				done
+
 				kubectl port-forward -n $namespace svc/$service_name $input:$container_port
 				break
 			else
