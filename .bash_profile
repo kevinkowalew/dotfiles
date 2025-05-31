@@ -108,6 +108,8 @@ alias gg='go generate ./...'
 export PATH=$PATH:$HOME/.rd/bin
 
 alias k3s='sh ${HOME}/dotfiles/ssh_k3s_node.sh'
+eval "$(direnv hook bash)"
+
 
 # _____
 #|_   _| __ ___  _   ___  __
