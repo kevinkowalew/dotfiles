@@ -1,4 +1,17 @@
 #!/bin/bash
+function prompt() {
+	while true; do
+		read -p "Open in browser? (y/n): " i
+		if [ "$i" = "y" ]; then
+			open -n -a "Google Chrome" --args "http://localhost:$1"
+			break
+		elif [ "$i" = "n" ]; then
+			break
+		fi
+	done
+}
+
+
 services=$(kubectl get svc --all-namespaces | grep -v kube-system | grep -v NAMESPACE)
 service_name=$(echo "${services[*]}" | awk '{print $2 " (" $1 ")"}' | fzf | awk '{print($1)}')
 if [ -z "$service_name" ]; then
@@ -24,46 +37,24 @@ while true; do
 	fi
 done
 
-if [[ $bind_port -eq $container_port ]];
-then
-	kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
-else 
-	while true; do 
-		read  -p "Enter port (default $bind_port): " input
-		if [[ $input -eq "" ]];
+while true; do 
+	read  -p "Enter port (default $bind_port): " input
+	if [[ $input -eq "" ]];
+	then
+		input=$bind_port
+		break
+	else
+		available=$(lsof -i :$input | wc -l)
+		if [[ $available -eq "0" ]];
 		then
-			while true; do
-				read -p "Open in browser? (y/n): " input
-				if [ "$input" = "y" ]; then
-					open -n -a "Google Chrome" --args "http://localhost:${bind_port}"
-					break
-				elif [ "$input" = "n" ]; then
-					break
-				fi
-			done
-
-			kubectl port-forward -n $namespace svc/$service_name $bind_port:$container_port
 			break
 		else
-			available=$(lsof -i :$input | wc -l)
-			if [[ $available -eq "0" ]];
-			then
-				while true; do
-					read -p "Open in browser? (y/n): " browser
-					if [ "$browser" = "y" ]; then
-						open -n -a "Google Chrome" --args "http://localhost:${input}"
-						break
-					elif [ "$browser" = "n" ]; then
-						break
-					fi
-				done
-
-				kubectl port-forward -n $namespace svc/$service_name $input:$container_port
-				break
-			else
-				echo Another process is already bound to $input. Choose another port.
-			fi
-
+			echo Another process is already bound to $input. Choose another port.
 		fi
-	done
-fi
+
+	fi
+done
+
+
+prompt $input
+kubectl port-forward -n $namespace svc/$service_name $input:$container_port
