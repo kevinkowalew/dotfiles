@@ -18,8 +18,9 @@ if [ -z "$service_name" ]; then
 	exit
 fi
 full_service=$(echo "${services[*]}" | grep ${service_name} | head -n 1)
+bind_port=$(echo $full_service | awk '{print($6)}' | tr "," "\n" | fzf --select-1 | cut -d "/" -f1 | cut -d ":" -f1)
+
 namespace=$(echo $full_service | awk '{print($1)}')
-bind_port=$(echo $full_service | awk '{print($6)}' | cut -d "/" -f1 | cut -d ":" -f1)
 container_port=$bind_port
 
 if [ $bind_port -lt 1024 ];
