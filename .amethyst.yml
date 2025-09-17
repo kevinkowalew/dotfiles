@@ -46,8 +46,8 @@ focus-main:
   key: <NONE>
 
 focus-screen-ccw:
-  mod: <NONE>
-  key: <NONE>
+  mod: mod1
+  key: ;
 
 focus-screen-cw:
   mod: <NONE>
