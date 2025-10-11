@@ -38,6 +38,7 @@ alias cpwd='echo "cd $(pwd)" | pbcopy'
 alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; f'
 alias hG='function f() { history_menu "$*"; unset -f f; }; f'
 alias notes='cd ~/notes && vim -c "Lexplore"'
+alias restart_k3s_cluster='sh ~/dotfiles/restart_k3s_cluster.sh'
 
 function switch_k8s_context() {
 	NAMESPACE=$(kubectl get namespace | grep -v NAME | awk '{print($1)}' | fzf)
