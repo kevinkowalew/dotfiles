@@ -33,7 +33,7 @@ alias rg='function f() { grep -r -n "$*" | grep -v .git; unset -f f; }; f'
 alias rG='function f() { recursive_grep_menu "$*"; unset -f f; }; f'
 alias m='cat Makefile | grep ":" | grep -v docker | cut -d":" -f1 | sort --reverse | fzf | xargs make'
 alias om='git s | grep modified | cut -d":" -f2'
-alias or='open_remote_in_chrome'
+alias or='git remote get-url origin | xargs open -n -a "Google Chrome" --args'
 alias cpwd='echo "cd $(pwd)" | pbcopy'
 alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; f'
 alias hG='function f() { history_menu "$*"; unset -f f; }; f'
@@ -53,12 +53,6 @@ function history_menu() {
 	cat $HOME/.bash_history | grep "$@" | fzf | pbcopy
 }
 
-
-function open_remote_in_chrome() {
-	REMOTE_NAME=$(git remote)
-	REPO_URL=$(git remote get-url $REMOTE_NAME | cut -d"@" -f2 | tr : /)
-	open -n -a "Google Chrome" --args $REPO_URL
-}
 
 function filter_bash_vi_mode_prefix() {
 	TO_RETURN=$(echo $@ | grep -v keymap | grep -v vi-command | tr '\n' ' ')
