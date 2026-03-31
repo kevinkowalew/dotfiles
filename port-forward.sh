@@ -3,7 +3,7 @@ function prompt() {
 	while true; do
 		read -p "Open in browser? (y/n): " i
 		if [ "$i" = "y" ]; then
-			open -n -a "Google Chrome" --args "http://localhost:$1"
+			chromium --app="http://localhost:$1"
 			break
 		elif [ "$i" = "n" ]; then
 			break

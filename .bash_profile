@@ -10,18 +10,21 @@ export PS1="$ "
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
 
-alias g='sh ~/dotfiles/sgit-shim.sh'
-alias git='sh ~/dotfiles/sgit-shim.sh'
+export DOT_FILES='${CODE_HOME_DIR}/shell/dotfiles'
+alias g='sh ${DOT_FILES}/sgit-shim.sh'
+alias git='sh ${DOT_FILES}/sgit-shim.sh'
 alias v='vim'
+alias vi='vim'
 alias d='docker'
 alias dc='docker-compose'
 alias k='kubectl'
-alias kubectx='function f() { sh ~/dotfiles/kubectx.sh "$*"; unset -f f; }; f'
-alias pf='function f() { sh ~/dotfiles/port-forward.sh "$*"; unset -f f; }; f'
-alias logs='function f() { sh ~/dotfiles/k8s-logs.sh "$*"; unset -f f; }; f'
+alias kubectx='function f() { sh ${DOT_FILES}/kubectx.sh "$*"; unset -f f; }; f'
+alias pf='function f() { sh ${DOT_FILES}/port-forward.sh "$*"; unset -f f; }; f'
+alias logs='function f() { sh ${DOT_FILES}/k8s-logs.sh "$*"; unset -f f; }; f'
+alias pbcopy='xargs wl-copy'
 alias t='tmux'
 alias c='clear'
-alias cpwd='echo "cd $(pwd)" | pbcopy'
+alias cpwd='echo "cd $(pwd)" | xclip -selection clipboard'
 alias ll='ls -l'
 alias e='exit'
 alias o='open .'
@@ -34,11 +37,11 @@ alias rG='function f() { recursive_grep_menu "$*"; unset -f f; }; f'
 alias m='cat Makefile | grep ":" | grep -v docker | cut -d":" -f1 | sort --reverse | fzf | xargs make'
 alias om='git s | grep modified | cut -d":" -f2'
 alias or='git remote get-url origin | xargs open -n -a "Google Chrome" --args'
-alias cpwd='echo "cd $(pwd)" | pbcopy'
+alias cpwd='echo "cd $(pwd)" | xclip -selection clipboard'
 alias hg='function f() { cat ${HOME}/.bash_history | grep "$*" ; unset -f f; }; f'
 alias hG='function f() { history_menu "$*"; unset -f f; }; f'
 alias notes='cd ~/notes && vim -c "Lexplore"'
-alias restart_k3s_cluster='sh ~/dotfiles/restart_k3s_cluster.sh'
+alias restart_k3s_cluster='sh ${DOT_FILES}/restart_k3s_cluster.sh'
 
 function switch_k8s_context() {
 	NAMESPACE=$(kubectl get namespace | grep -v NAME | awk '{print($1)}' | fzf)
@@ -46,11 +49,11 @@ function switch_k8s_context() {
 }
 
 function recursive_grep_menu() {
-	grep -r -n "$@" | grep -v .git | fzf | cut -d":" -f2 -f1 | awk -F":" '{print "+"$2, $1}' | xargs -o vim
+	grep -r -n "$@" | grep -v .git | fzf | cut --delimiter ":" --fields 2,1 | awk -F":" '{print "+"$2, $1}' | xargs -o vim
 }
 
 function history_menu() {
-	cat $HOME/.bash_history | grep "$@" | fzf | pbcopy
+	cat $HOME/.bash_history | grep "$@" | fzf | xclip -selection clipboard
 }
 
 
@@ -82,7 +85,7 @@ alias stop-nexus='docker rm -f $(docker ps | grep nexus | cut -d" " -f1)'
 alias start-docker-hub='docker run -d -p 5000:5000 --restart=always --name dockerhub registry:2'
 alias stop-docker-hub='docker rm -f $(docker ps | grep dockerhub | cut -d" " -f1)'
 alias dd='ENTITY=$(filter_bash_vi_mode_prefix $@); exec -c "docker $ENTITY ls";'
-alias code='cd $CODE_HOME_DIR/$GITHUB_USERNAME'
+alias code='selected=$(find "$CODE_HOME_DIR" -mindepth 2 -maxdepth 2 -type d | cut -d "/" -f7-8 | fzf) ;cd "$CODE_HOME_DIR/$selected"'
 
 #  ____
 # / ___| ___
@@ -102,7 +105,7 @@ alias gb='go build ./...'
 alias gg='go generate ./...'
 export PATH=$PATH:$HOME/.rd/bin
 
-alias k3s='sh ${HOME}/dotfiles/ssh_k3s_node.sh'
+alias k3s='sh ${DOT_FILES}/ssh_k3s_node.sh'
 eval "$(direnv hook bash)"
 
 

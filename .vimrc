@@ -107,3 +107,4 @@ let g:netrw_browse_split = 4 "always use vertical split
 let g:netrw_winsize = 25 " default width
 let g:netrw_altv = 1 " Open files in the new vertical split
 map <silent> <leader>f :Lexplore<CR>
+

@@ -12,3 +12,4 @@ build:
 	cat ./.amethyst.yml > ${HOME}/.amethyst.yml
 	cat ./.gitconfig > ${HOME}/.gitconfig
 	cat ./coc-settings.json > ${HOME}/.vim/coc-settings.json
+	source ~/.bash_profile
