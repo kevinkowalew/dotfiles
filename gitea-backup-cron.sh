@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ -z "$1" ]; then
-  echo "You must provide a filepath to save your gitea backup"
+  echo "You must provide an output filepath argument to save your backup"
   exit 1
 fi
 
