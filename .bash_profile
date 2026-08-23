@@ -5,7 +5,6 @@
 #|____/ \__,_|___/_| |_|
 #
 set -o vi
-set keymap vi-command
 export PS1="$ "
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export EDITOR=vim
@@ -144,7 +143,7 @@ source_if_existent "$HOME/.work_rc"
 source_if_existent "$HOME/.env"
 
 # .bash_profile snippet to attach to an existing tmux session or create one
-if [ -z "$TMUX" ]; then
+if [[ $- == *i* && -z "$TMUX" ]]; then
   if tmux list-sessions 2>/dev/null | grep -q .; then
     exec tmux attach-session
   else
